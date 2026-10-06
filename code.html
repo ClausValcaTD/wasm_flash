@@ -5,30 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Hoshi Saga - WAFlash</title>
 
-    <!-- أداة فحص الموبايل عشان لو في أي تفصيلة تبان قدامك ع التابلت -->
+    <!-- أداة فحص الموبايل عشان تتابع الشبكة واللوجات ع التابلت -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
 
-    <!-- استدعاء ملف الستايل المحلي من نفس الريبو -->
+    <!-- ملف الستايل المحلي من نفس الريبو -->
     <link href="./style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <script>
-        // قراءة الرابط لو مبعوت، أو تشغيل هوشي ساجا الافتراضية محلياً
         var urlParams = new URLSearchParams(window.location.search);
         var targetSwf = urlParams.get("swf") || "./hoshi1.swf";
 
+        // 🧠 تحويل الرابط تلقائياً لـ Full HTTPS URL عشان كود C++ يفهم إنه يسحبه عبر الشبكة
+        var absoluteSwfUrl = new URL(targetSwf, window.location.href).href;
+
         var gameConfig = {
-            swfUrl: targetSwf
+            swfUrl: absoluteSwfUrl
         };
-        console.log("🎮 Target SWF to load:", gameConfig.swfUrl);
+        console.log("🎮 Full HTTPS URL to load:", gameConfig.swfUrl);
     </script>
 
     <div id="waflashContainer">
         <canvas class="waflashCanvas" id="canvas" tabindex="1"></canvas>
         <div id="waflashStatus" style="display: none;">Playing...</div>
         
-        <!-- استدعاء المشغل الرئيسي من نفس الريبو محلياً -->
+        <!-- استدعاء main.js المحلي -->
         <script src="./main.js" crossorigin="anonymous" type="module"></script>
     </div>
 </body>
