@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hoshi Saga - WAFlash</title>
+    <title>Hoshi Saga 1 - WAFlash</title>
 
     <!-- أداة فحص الموبايل عشان تتابع الشبكة واللوجات ع التابلت -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
@@ -15,22 +15,24 @@
 <body>
     <script>
         var urlParams = new URLSearchParams(window.location.search);
-        var targetSwf = urlParams.get("swf") || "./hoshi1.swf";
+        
+        // 🎮 اللعبة الافتراضية دلوقتي بقت المسار المنظم الجديد جوه games/hoshi1/main.swf
+        var targetSwf = urlParams.get("swf") || "./games/hoshi1/main.swf";
 
-        // 🧠 تحويل الرابط تلقائياً لـ Full HTTPS URL عشان كود C++ يفهم إنه يسحبه عبر الشبكة
+        // تحويل الرابط لرابط ويب كامل بيبدأ بـ https:// عشان محرك C++ يسحبه عبر الشبكة
         var absoluteSwfUrl = new URL(targetSwf, window.location.href).href;
 
         var gameConfig = {
             swfUrl: absoluteSwfUrl
         };
-        console.log("🎮 Full HTTPS URL to load:", gameConfig.swfUrl);
+        console.log("🎮 Target Game URL:", gameConfig.swfUrl);
     </script>
 
     <div id="waflashContainer">
         <canvas class="waflashCanvas" id="canvas" tabindex="1"></canvas>
         <div id="waflashStatus" style="display: none;">Playing...</div>
         
-        <!-- استدعاء main.js المحلي -->
+        <!-- استدعاء المشغل الرئيسي المحلي -->
         <script src="./main.js" crossorigin="anonymous" type="module"></script>
     </div>
 </body>
