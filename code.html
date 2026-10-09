@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hoshi Saga 1 - WAFlash</title>
+    <title>WAFlash</title>
 
     <!-- أداة فحص الموبايل عشان تتابع الشبكة واللوجات ع التابلت -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
@@ -16,8 +16,7 @@
     <script>
         var urlParams = new URLSearchParams(window.location.search);
         
-        // 🎮 اللعبة الافتراضية دلوقتي بقت المسار المنظم الجديد جوه games/hoshi1/main.swf
-        var targetSwf = urlParams.get("swf") || "./games/hoshi1/main.swf";
+        var targetSwf = urlParams.get("swf") || "./ogood.swf";
 
         // تحويل الرابط لرابط ويب كامل بيبدأ بـ https:// عشان محرك C++ يسحبه عبر الشبكة
         var absoluteSwfUrl = new URL(targetSwf, window.location.href).href;
